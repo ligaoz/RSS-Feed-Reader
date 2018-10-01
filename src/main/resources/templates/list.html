@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>RssFeed Items</title>
+    <link href="../static/css/bootstrap.min.css" th:href="@{../css/bootstrap.min.css}" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h2>XML RSS Feed</h2>
+    <h3>Please find the list of all available Feed</h3>
+    <div class="row" style="width: 400px;">
+    <table class="table table-hover">
+        <tr>
+            <th>Feed Link</th>
+        </tr>
+        <tr th:each="item : ${items}">
+            <td><a th:text="${item.url}" href="#" th:href="${'/feed/' + item.id}"></a></td>
+        </tr>
+    </table>
+    <a style="margin-left: 45px;margin-bottom: 30px" th:href="${'/feed'}" class="btn btn-default">Add New Feed</a>
+    </div>
+</div>
+</div>
+</body>

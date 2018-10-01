@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>XML RSS Feed details</title>
+    <link href="../../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+</head>
+<body>
+
+<div style="display:block" class="container-fluid">
+    <table style="margin-left: 0px;" class="table">
+        <tr>
+            <th colspan="4" style="background-color:lightsteelblue"><h2>Feed Details</h2></th>
+        </tr>
+        <tr>
+            <th>Feed Name</th>
+            <th>Feed URL Address</th>
+            <th>Update Time</th>
+            <th>Article Count</th>
+        </tr>
+        <tr>
+            <td th:text="${Feed.feedName}"></td>
+            <td th:text="${Feed.url}">URL</td>
+            <td th:text="${Feed.lastUpdate}">Published</td>
+            <td th:text="${count}"> Article Count</td>
+        </tr>
+    </table>
+    <table class="table-striped">
+        <tr>
+            <th colspan="4" style="background-color:lightsteelblue"><h4>Recent Articles</h4></th>
+        </tr>
+        <tr>
+            <th><h4>Title</h4></th>
+            <th><h4>Link</h4></th>
+            <th><h4>Description</h4></th>
+        </tr>
+
+        <tr th:each="item : ${Item}">
+            <td th:text="${item.title}">Title</td>
+            <td><a th:utext="${item.link}" href="#" th:href="${item.link}"></a>>URL</td>
+            <td colspan="2">
+                <div th:utext="${item.description}">Description</div>
+            </td>
+        </tr>
+    </table>
+
+    <a th:href="${'/feed/list'}" class="btn btn-default">Back</a>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="../static/js/bootstrap.min.js" th:src="@{../js/bootstrap.min.js}"></script>
+
+</body>
+</html>
